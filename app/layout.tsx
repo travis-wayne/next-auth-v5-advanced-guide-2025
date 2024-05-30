@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { auth } from "@/auth";
+import { fontSans } from "@/lib/fonts"
+import { cn } from "@/lib/utils"
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -22,7 +24,10 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={cn(
+              "min-h-screen bg-background font-sans antialiased",
+              fontSans.variable
+            )}>
           <Toaster />
           {children}
         </body>
